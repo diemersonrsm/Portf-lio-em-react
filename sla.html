@@ -1,0 +1,65 @@
+<html>
+<head>
+    <title>Calculadora de Média</title>
+</head>
+
+<body>
+    <form>
+        <label>Nota 1:</label>
+        <input type="number" id="n1"><br>
+
+        <label>Nota 2:</label>
+        <input type="number" id="n2"><br>
+
+        <label>Prova final:</label>
+        <input type="number" id="n3"><br>
+        <button type="button" onclick="calculo()">Calcular Média</button><br><br>
+
+        <label>Média:</label>
+        <label id="medi">*</label><br>
+
+        <label>Situação:</label>
+        <label id="situacao">*</label>
+    </form>
+
+    <script>
+        function calculo() {
+            let n1 = parseFloat(document.getElementById("n1").value);
+            let n2 = parseFloat(document.getElementById("n2").value);
+            let n3 = parseFloat(document.getElementById("n3").value);
+            let paoo = document.getElementById("medi");
+            let baoo = document.getElementById("situacao");
+
+           
+            if (isNaN(n1) || isNaN(n2)) {
+                alert("Por favor, preencha todas as notas.");
+                return;
+            }
+
+            if (n1 < 0 || n1 > 10 || n2 < 0 || n2 > 10) {
+                alert("As notas devem estar entre 0 e 10.");
+                return;
+            }
+
+            let media = (n1 + n2 + n3) / 3;
+
+            paoo.innerHTML = media.toFixed(1);
+
+       
+            if (media >= 7) {
+                baoo.innerHTML = "Aprovado";
+                document.getElementById("baoo").style.color = "green";
+            } else if (media >= 5) {
+                baoo.innerHTML = "Recuperação";
+                baoo.style.color = "orange";
+            } else {
+                baoo.innerHTML = "Reprovado";
+                baoo.style.color = "red";
+            }
+         
+
+            
+        }
+    </script>
+</body>
+</html>
